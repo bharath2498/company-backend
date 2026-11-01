@@ -24,7 +24,7 @@ jobs:
       DB_PASSWORD: testpassword
       DB_HOST: localhost
       DB_PORT: 5432
-
+      SECRET_KEY: django-ci-test-secret-key
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
