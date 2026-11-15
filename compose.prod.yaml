@@ -38,6 +38,18 @@ services:
     image: redis:7-alpine
     container_name: bharath-redis
     restart: unless-stopped
+  celery:
+    image: ghcr.io/bharath2498/company-backend:latest
+    container_name: bharath-celery
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+    command: celery -A company_backend worker --loglevel=info
+    depends_on:
+      - db
+      - redis
 volumes:
   postgres_data:
   static_data:
